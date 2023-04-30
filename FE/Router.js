@@ -9,9 +9,9 @@ const nodemailer = require('nodemailer')
 
 const sender = nodemailer.createTransport({
     service: 'gmail',
-     auth: {
-        user: 'bharanimyd@gmail.com',
-        pass: 'ktzmpockjbxjngov'
+    auth: {
+        user: 'yogdharshni06@gmail.com',
+        pass: 'nzlpzzoojwubmjoo'
     }
 })
 
@@ -20,7 +20,7 @@ const sender = nodemailer.createTransport({
 //Terminal suggesion
 mongoose.set("strictQuery", false);
 
-mongoose.connect("mongodb://127.0.0.1:27017/emailTask", (err, db) => {
+mongoose.connect("mongodb+srv://yogdharshni06:bulkmail@cluster0.s9taje0.mongodb.net/bulkmail", (err, db) => {
 
     var Database = db
     if (err) throw err;
@@ -36,7 +36,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/emailTask", (err, db) => {
         text = mailContent.body
 
         const composemail = {
-            from: 'bharanimyd@gmail.com',
+            from: 'yogdharshni06@gmail.com',
             to: email,
             subject: subject,
             text: text
@@ -49,7 +49,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/emailTask", (err, db) => {
 
         await sender.sendMail(composemail, (err, info) => {
             if (err) throw err
-            
+
         })
         await res.json('mail sent successfully')
 
@@ -71,7 +71,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/emailTask", (err, db) => {
         let users = await Database.collection('userlist').find().toArray()
         await response.json(users)
     })
-   
+
 
 
 
